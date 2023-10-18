@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main() {
+void main() {
     char nome[100];
     char cpf[15];
     int escolha;
@@ -59,5 +59,5 @@ int main() {
             break;
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
