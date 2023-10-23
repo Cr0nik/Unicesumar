@@ -3,27 +3,34 @@
 #include <locale.h>
 #include <math.h>
 
-int main(){
+int main() {
     setlocale(LC_ALL, "");
+    float valorInvestido;
+    int periodoMeses;
+    float percentualRendimento;
+    float saldoFinal;
+    float imposto = 0.15;
 
-    float valorInvestido = 0 ;
-    int periodo = 0;
-    float percentualRendimento = 0;
-    float juros;
-    float porcentagem;
-
-    printf("Digite o valor investido:");
+    printf("Digite o valor investido: R$");
     scanf("%f", &valorInvestido);
-    printf("Digite a quantidade de meses investidos:");
-    scanf("%d", &periodo);
-    printf("Digite o percentual de rendimento:");
-    scanf("%f", &percentualRendimento);
-    porcentagem = percentualRendimento / 100;
 
-    for (size_t i = 1; i <= periodo; i++)
-    {
-        juros = valorInvestido * pow(1 + porcentagem, i);
-        printf("Depois do %d mes tera =%.2f\n", i, juros);
+    printf("Digite a quantidade de meses investidos: ");
+    scanf("%d", &periodoMeses);
+
+    printf("Digite o percentual de rendimento por mês (em decimal, ex: 1%% = 0.01): ");
+    scanf("%f", &percentualRendimento);
+
+    saldoFinal = valorInvestido;
+    for (int i = 0; i < periodoMeses; i++) {
+        saldoFinal += saldoFinal * percentualRendimento;
     }
+
+    float lucro = saldoFinal - valorInvestido;
+    float valorImposto = lucro * imposto;
+
+    saldoFinal -= valorImposto;
+
+    printf("Valor Saldo Final: R$%.2f\n", saldoFinal);
+
     return 0;
 }
