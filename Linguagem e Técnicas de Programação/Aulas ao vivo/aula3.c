@@ -3,22 +3,40 @@
 #include <locale.h>
 
 void main(){
+
     setlocale(LC_ALL, "");
 
-    printf("Qual o seu genero?\n");
-    char genero;
-    scanf("%c", &genero);
+    int qtdavaliacoes;
+    float total = 0.0;
+    int i;
+    float nota;
+    float media;
 
-    if (genero == 'M' || genero == 'm')
+    printf("Digite a quantidade de avaliações:\n");
+    fflush(stdin);
+    scanf("%d", &qtdavaliacoes);
+
+    for (i = 1; i < qtdavaliacoes; i++)
     {
-        printf("Masculino\n");
+        printf("Digite a nota da %d avaliação:", i);
+        fflush(stdin);
+        scanf("%f", &nota);
+        total = total + nota;
     }
-    else if (genero == 'F' || genero == 'f')
+    
+    media = total /qtdavaliacoes;
+
+    if (media >= 6)
     {
-        printf("Feminino\n");
+        printf("Você foi aprovado!!");
+    }
+    else if (media <= 6 && media >= 4)
+    {
+        printf("Recuperação!!");
     }
     else
-        printf("Outros\n");
-    
+    {
+        printf("Reprovado!!");
+    }
     return EXIT_SUCCESS;
 }
